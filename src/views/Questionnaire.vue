@@ -84,11 +84,12 @@
                           color="primary"
                           background-color="grey lighten-1"
                           length="10"
+                          v-model="question.rating"
                         ></v-rating>
                         <div>
                           <span class="caption text-uppercase">Rating:</span>
                           <span class="font-weight-bold">
-                            {{ rating }}/10
+                            {{ question.rating }}/10
                           </span>
                         </div>
                       </div>
@@ -146,13 +147,10 @@
                 </div>
               </div>
 
-              <v-btn color="error" class="mr-4" @click="reset">
-                Reset Form
+              <v-btn color="primary"  class="ma-8" justify-center @click="reset">
+                Submit
               </v-btn>
 
-              <v-btn color="warning" @click="resetValidation">
-                Reset Validation
-              </v-btn>
             </v-form>
           </v-card>
         </v-layout>

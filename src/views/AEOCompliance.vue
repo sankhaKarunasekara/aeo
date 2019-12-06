@@ -1,51 +1,59 @@
 <template>
-  <v-app>
-    <v-app-bar app color="light">
-      <div class="d-flex align-center">
-        <router-link to="/">
-          <v-img
-            alt="Vuetify Logo"
-            class="shrink mr-2"
-            contain
-            src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-            transition="scale-transition"
-            width="40"
-          />
-        </router-link>
-        <h2>AEO Program - Sri Lanka Customs</h2>
-      </div>
-      <v-spacer></v-spacer>
-      <v-menu offset-y>
-        <template v-slot:activator="{ on }">
-          <v-btn large icon v-on="on">
-            <v-icon large color="gray">mdi-account-circle</v-icon>
-          </v-btn>
-        </template>
-        <v-list>
-          <v-list-item>
-            <v-list-item-title @click="signOut()">logout</v-list-item-title>
-          </v-list-item>
-        </v-list>
-      </v-menu>
-    </v-app-bar>
+  <v-card class="overflow-hidden">
+    <v-app-bar
+      absolute
+      color="#43a047"
+      dark
+      shrink-on-scroll
+      prominent
+      src="https://picsum.photos/1920/1080?random"
+      fade-img-on-scroll
+      scroll-target="#scrolling-techniques-5"
+      scroll-threshold="500"
+    >
+      <template v-slot:img="{ props }">
+        <v-img
+          v-bind="props"
+          gradient="to top right, rgba(55,236,186,.7), rgba(25,32,72,.7)"
+        ></v-img>
+      </template>
 
-    <v-content>
-      <v-container fluid>
-        <v-layout></v-layout>
-      </v-container>
-    </v-content>
-    <v-footer>
-      <span class="px-4"
-        >Sri Lanka Customs &copy; {{ new Date().getFullYear() }}</span
-      >
-    </v-footer>
-  </v-app>
+      <v-app-bar-nav-icon></v-app-bar-nav-icon>
+
+      <v-toolbar-title>Title</v-toolbar-title>
+
+      <v-spacer></v-spacer>
+
+      <v-btn icon>
+        <v-icon>mdi-magnify</v-icon>
+      </v-btn>
+
+      <v-btn icon>
+        <v-icon>mdi-heart</v-icon>
+      </v-btn>
+
+      <v-btn icon>
+        <v-icon>mdi-dots-vertical</v-icon>
+      </v-btn>
+    </v-app-bar>
+    <v-sheet
+      id="scrolling-techniques-5"
+      class="overflow-y-auto"
+      max-height="600"
+    >
+      <v-container style="height: 1500px;"></v-container>
+    </v-sheet>
+  </v-card>
 </template>
 
 <script>
 import router from "../router";
+//import CompanyDetails from "../components/CompanyDetails";
 
 export default {
+  components: {
+    //CompanyDetails
+  },
   name: "AEOCompliance",
   methods: {
     signOut: function() {

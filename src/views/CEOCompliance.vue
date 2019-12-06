@@ -31,88 +31,69 @@
 
     <v-content>
       <v-container fluid>
-        <v-layout class="pa-8">
-          <v-card flat min-height="80">
-            <v-tabs align="left" vertical>
-              <v-tab grow>
-                <v-icon left>mdi-account</v-icon>
-                Company Details
-              </v-tab>
-              <v-tab>
-                <v-icon left>mdi-lock</v-icon>
-                Operational Details
-              </v-tab>
-              <v-tab>
-                <v-icon left>mdi-access-point</v-icon>
-                Addresses
-              </v-tab>
-              <v-tab>
-                <v-icon left>mdi-access-point</v-icon>
-                Contact Person
-              </v-tab>
-              <v-tab>
-                <v-icon left>mdi-access-point</v-icon>
-                Self Assessment
-              </v-tab>
+        <v-layout>
+          <v-tabs>
+            <v-tab>
+              <v-icon left>mdi-account</v-icon>
+              Company Details
+            </v-tab>
+            <v-tab>
+              <v-icon left>mdi-lock</v-icon>
+              Operational Details
+            </v-tab>
+            <v-tab>
+              <v-icon left>mdi-access-point</v-icon>
+              Addresses
+            </v-tab>
+            <v-tab>
+              <v-icon left>mdi-access-point</v-icon>
+              Contact Person
+            </v-tab>
+            <v-tab>
+              <v-icon left>mdi-access-point</v-icon>
+              Self Assessment
+            </v-tab>
 
-              <v-tab-item>
-                <v-card flat>
-                  <v-card-text>
-                    <p>
-                      Sed aliquam ultrices mauris. Donec posuere vulputate arcu.
-                      Morbi ac felis. Etiam feugiat lorem non metus. Sed a
-                      libero.
-                    </p>
-                  </v-card-text>
-                </v-card>
-              </v-tab-item>
-              <v-tab-item>
-                <v-card flat>
-                  <v-card-text>
-                    <p>
-                      Morbi nec metus. Suspendisse faucibus, nunc et
-                      pellentesque egestas, lacus ante convallis tellus, vitae i
-                    </p>
-                  </v-card-text>
-                </v-card>
-              </v-tab-item>
-              <v-tab-item>
-                <v-card flat>
-                  <v-card-text>
-                    <p>
-                      Fusce a quam. Phasellus nec sem in justo pellentesque
-                      facilisis. Nam eget dui. Proin viverra, ligula sit amet
-                      ultrices semper, ligula arcu tristique sapien, a accumsan
-                      nisi mauris ac eros. In dui magna, posuere eget,
-                      vestibulum et, tempor auctor, justo.
-                    </p>
-                  </v-card-text>
-                </v-card>
-              </v-tab-item>
-              <v-tab-item>
-                <v-card flat>
-                  <v-card-text>
-                    <p>
-                      Sed aliquam ultrices mauris. Donec posuere vulputate arcu.
-                      Morbi ac felis. Etiam feugiat lorem non metus. Sed a
-                      libero.
-                    </p>
-                  </v-card-text>
-                </v-card>
-              </v-tab-item>
-              <v-tab-item>
-                <v-card flat>
-                  <v-card-text>
-                    <p>
-                      Sed aliquam ultrices mauris. Donec posuere vulputate arcu.
-                      Morbi ac felis. Etiam feugiat lorem non metus. Sed a
-                      libero.
-                    </p>
-                  </v-card-text>
-                </v-card>
-              </v-tab-item>
-            </v-tabs>
-          </v-card>
+            <v-tab-item>
+              <CompanyDetails />
+            </v-tab-item>
+            <v-tab-item>
+              <OperationalDetails />
+            </v-tab-item>
+            <v-tab-item>
+              <v-card flat>
+                <v-card-text>
+                  <p>
+                    Fusce a quam. Phasellus nec sem in justo pellentesque
+                    facilisis. Nam eget dui. Proin viverra, ligula sit amet
+                    ultrices semper, ligula arcu tristique sapien, a accumsan
+                    nisi mauris ac eros. In dui magna, posuere eget, vestibulum
+                    et, tempor auctor, justo.
+                  </p>
+                </v-card-text>
+              </v-card>
+            </v-tab-item>
+            <v-tab-item>
+              <v-card flat>
+                <v-card-text>
+                  <p>
+                    Sed aliquam ultrices mauris. Donec posuere vulputate arcu.
+                    Morbi ac felis. Etiam feugiat lorem non metus. Sed a libero.
+                  </p>
+                </v-card-text>
+              </v-card>
+            </v-tab-item>
+            <v-tab-item>
+              <v-card flat>
+                <v-card-text>
+                  <p>
+                    Sed aliquam ultrices mauris. Donec posuere vulputate arcu.
+                    Morbi ac felis. Etiam feugiat lorem non metus. Sed a libero.
+                  </p>
+                </v-card-text>
+              </v-card>
+            </v-tab-item>
+          </v-tabs>
         </v-layout>
       </v-container>
     </v-content>
@@ -126,9 +107,15 @@
 
 <script>
 import router from "../router";
+import CompanyDetails from "../components/CompanyDetails";
+import OperationalDetails from "../components/OperationalDetails";
 
 export default {
   name: "CEOCompliance",
+  components: {
+    CompanyDetails,
+    OperationalDetails
+  },
   methods: {
     signOut: function() {
       router.push({ name: "home" });
