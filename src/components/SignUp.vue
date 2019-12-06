@@ -63,7 +63,7 @@
                       </template>
                     </v-checkbox>
                     <v-row justify="center">
-                      <v-btn color="primary">Register</v-btn>
+                      <v-btn to="/Questionnaire" color="primary">Next</v-btn>
                     </v-row>
                   </v-flex>
                 </v-layout>

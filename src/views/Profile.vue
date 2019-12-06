@@ -130,10 +130,18 @@
             <v-layout row wrap align-center>
               <v-flex>
                 <v-row justify="center" class="mb-8 mt-4 ml-8 mr-8 pb-4">
-                  <v-btn class="ma-2" x-large color="primary"
+                  <v-btn
+                    class="ma-2"
+                    to="/CEO/General_Compliance"
+                    x-large
+                    color="primary"
                     >Apply for CEO</v-btn
                   >
-                  <v-btn class="ma-2" color="primary" x-large
+                  <v-btn
+                    class="ma-2"
+                    to="/AEO/General_Compliance"
+                    color="primary"
+                    x-large
                     >Apply for AEO</v-btn
                   >
                 </v-row>

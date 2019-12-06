@@ -29,6 +29,12 @@ const routes = [
     component: AEOCompliance
   },
   {
+    path: "/Questionnaire",
+    name: "questionnaire",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/Questionnaire.vue")
+  },
+  {
     path: "/about",
     name: "about",
     component: () =>
