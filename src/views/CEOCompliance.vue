@@ -61,17 +61,7 @@
               <OperationalDetails />
             </v-tab-item>
             <v-tab-item>
-              <v-card flat>
-                <v-card-text>
-                  <p>
-                    Fusce a quam. Phasellus nec sem in justo pellentesque
-                    facilisis. Nam eget dui. Proin viverra, ligula sit amet
-                    ultrices semper, ligula arcu tristique sapien, a accumsan
-                    nisi mauris ac eros. In dui magna, posuere eget, vestibulum
-                    et, tempor auctor, justo.
-                  </p>
-                </v-card-text>
-              </v-card>
+              <Address />
             </v-tab-item>
             <v-tab-item>
               <v-card flat>
@@ -109,12 +99,14 @@
 import router from "../router";
 import CompanyDetails from "../components/CompanyDetails";
 import OperationalDetails from "../components/OperationalDetails";
+import Address from "../components/Address";
 
 export default {
   name: "CEOCompliance",
   components: {
     CompanyDetails,
-    OperationalDetails
+    OperationalDetails,
+    Address
   },
   methods: {
     signOut: function() {

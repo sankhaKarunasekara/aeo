@@ -2,7 +2,7 @@
   <v-content>
     <v-container>
       <v-layout justify-center flat="true" wrap>
-        <v-card outlined width="80%" class="pa-8">
+        <v-card outlined width="90%" class="pa-8">
           <v-list-item two-line>
             <v-list-item-content>
               <v-list-item-title class="headline"
@@ -146,10 +146,11 @@
               </v-file-input>
             </v-row>
           </v-card-text>
-          <v-card-action>
+          <v-card-actions>
+            <v-btn>Previous</v-btn>
             <v-spacer></v-spacer>
             <v-btn>Next</v-btn>
-          </v-card-action>
+          </v-card-actions>
         </v-card>
       </v-layout>
     </v-container>
