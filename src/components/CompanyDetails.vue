@@ -2,7 +2,7 @@
   <v-content>
     <v-container>
       <v-layout justify-center flat="true" wrap>
-        <v-card outlined width="90%" class="pa-8">
+        <v-card outlined width="95%" class="pa-8">
           <v-list-item two-line>
             <v-list-item-content>
               <v-list-item-title class="headline"

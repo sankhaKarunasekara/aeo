@@ -4,10 +4,11 @@
       <div class="d-flex align-center">
         <router-link to="/">
           <v-img
-            alt="Vuetify Logo"
+            to="/"
+            alt="AEO Logo"
             class="shrink mr-2"
             contain
-            src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
+            src="../assets/logo.png"
             transition="scale-transition"
             width="40"
           />
