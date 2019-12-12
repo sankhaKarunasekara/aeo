@@ -34,25 +34,25 @@
         <v-layout>
           <v-tabs>
             <v-tab>
-              <v-icon left>mdi-account</v-icon>
+              <v-icon left>mdi-office-building</v-icon>
               Company Details
             </v-tab>
             <v-tab>
-              <v-icon left>mdi-lock</v-icon>
+              <v-icon left>mdi-account-details</v-icon>
               Operational Details
             </v-tab>
             <v-tab>
-              <v-icon left>mdi-access-point</v-icon>
-              Addresses
+              <v-icon left>mdi-map</v-icon>
+              Location Details
             </v-tab>
             <v-tab>
-              <v-icon left>mdi-access-point</v-icon>
+              <v-icon left>mdi-account</v-icon>
               Contact Person
             </v-tab>
-            <v-tab>
-              <v-icon left>mdi-access-point</v-icon>
+            <!-- <v-tab>
+              <v-icon left>mdi-point</v-icon>
               Self Assessment
-            </v-tab>
+            </v-tab> -->
 
             <v-tab-item>
               <CompanyDetails />

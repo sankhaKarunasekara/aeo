@@ -14,10 +14,10 @@
                 <v-icon color="white">mdi-plus</v-icon>
                 Add Location
               </v-btn>
-              <v-btn @click="deleteTab()" color="error">
+              <!-- <v-btn @click="deleteTab()" color="error">
                 <v-icon color="white">mdi-delete</v-icon>
                 Add Location
-              </v-btn>
+              </v-btn> -->
             </v-list-item-action>
           </v-list-item>
           <v-card-text>
