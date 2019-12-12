@@ -1,7 +1,7 @@
 <template>
   <v-data-table
     :headers="headers"
-    :items="desserts"
+    :items="items"
     sort-by="country"
     class="elevation-1"
   >
@@ -98,7 +98,7 @@ export default {
       { text: "Anual Value", value: "annualValue" },
       { text: "Actions", value: "action", sortable: false }
     ],
-    desserts: [],
+    items: [],
     editedIndex: -1,
     editedItem: {
       name: "",
@@ -132,7 +132,7 @@ export default {
 
   methods: {
     initialize() {
-      this.desserts = [
+      this.items = [
         {
           name: "Frozen Yogurt",
           country: 159,
@@ -143,15 +143,15 @@ export default {
     },
 
     editItem(item) {
-      this.editedIndex = this.desserts.indexOf(item);
+      this.editedIndex = this.items.indexOf(item);
       this.editedItem = Object.assign({}, item);
       this.dialog = true;
     },
 
     deleteItem(item) {
-      const index = this.desserts.indexOf(item);
+      const index = this.items.indexOf(item);
       confirm("Are you sure you want to delete this item?") &&
-        this.desserts.splice(index, 1);
+        this.items.splice(index, 1);
     },
 
     close() {
@@ -164,9 +164,9 @@ export default {
 
     save() {
       if (this.editedIndex > -1) {
-        Object.assign(this.desserts[this.editedIndex], this.editedItem);
+        Object.assign(this.items[this.editedIndex], this.editedItem);
       } else {
-        this.desserts.push(this.editedItem);
+        this.items.push(this.editedItem);
       }
       this.close();
     }

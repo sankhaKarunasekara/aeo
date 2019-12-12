@@ -71,79 +71,94 @@
 
             <v-subheader class="pl-0"><h3>Attachments</h3></v-subheader>
             <v-divider class="py-4"></v-divider>
+
             <v-row>
-              <p class="mt-4 ml-4">TIN Registration :</p>
-              <v-file-input
-                v-model="files"
-                color="primary accent-4"
-                label="Upload your VAT Registration Certificate"
-                counter
-                placeholder="Click here to upload"
-                outlined
-                :show-size="1000"
-              >
-                <template v-slot:selection="{ index, text }">
-                  <v-chip
-                    v-if="index < 2"
-                    color="deep-purple accent-4"
-                    dark
-                    label
-                    small
-                  >
-                    {{ text }}
-                  </v-chip>
-                </template>
-              </v-file-input>
+              <v-col cols="12" sm="12" md="4" lg="2">
+                <p class="mt-4 ml-4">TIN Registration :</p>
+              </v-col>
+              <v-col cols="12" sm="12" md="8" lg="10"
+                ><v-file-input
+                  v-model="files"
+                  color="deep-purple accent-4"
+                  counter
+                  label="Upload your VAT Registration Certificate"
+                  multiple
+                  placeholder="Click here to upload"
+                  outlined
+                  :show-size="1000"
+                >
+                  <template v-slot:selection="{ index, text }">
+                    <v-chip
+                      v-if="index < 2"
+                      color="deep-purple accent-4"
+                      dark
+                      label
+                      small
+                    >
+                      {{ text }}
+                    </v-chip>
+                  </template>
+                </v-file-input>
+              </v-col>
             </v-row>
+
             <v-row>
-              <p class="mt-4 ml-4">Vat Registration :</p>
-              <v-file-input
-                v-model="files"
-                color="deep-purple accent-4"
-                counter
-                label="Upload your VAT Registration Certificate"
-                multiple
-                placeholder="Click here to upload"
-                outlined
-                :show-size="1000"
-              >
-                <template v-slot:selection="{ index, text }">
-                  <v-chip
-                    v-if="index < 2"
-                    color="deep-purple accent-4"
-                    dark
-                    label
-                    small
-                  >
-                    {{ text }}
-                  </v-chip>
-                </template>
-              </v-file-input>
+              <v-col cols="12" sm="12" md="4" lg="2">
+                <p class="mt-4 ml-4">Vat Registration :</p>
+              </v-col>
+              <v-col cols="12" sm="12" md="8" lg="10">
+                <v-file-input
+                  v-model="files"
+                  color="deep-purple accent-4"
+                  counter
+                  label="Upload your Transport Document (Gate Pass)"
+                  multiple
+                  placeholder="Click here to upload"
+                  outlined
+                  :show-size="1000"
+                >
+                  <template v-slot:selection="{ index, text }">
+                    <v-chip
+                      v-if="index < 2"
+                      color="deep-purple accent-4"
+                      dark
+                      label
+                      small
+                    >
+                      {{ text }}
+                    </v-chip>
+                  </template>
+                </v-file-input>
+              </v-col>
             </v-row>
+
             <v-row>
-              <p class="mt-4 ml-4">Company Registration :</p>
-              <v-file-input
-                v-model="files"
-                color="deep-purple accent-4"
-                counter
-                label="Upload your Company Registration Certificate"
-                multiple
-                placeholder="Click here to upload"
-                outlined
-                :show-size="1000"
-              >
-                <template v-slot:selection="{ index, text }">
-                  <v-chip
-                    v-if="index < 2"
-                    color="deep-purple accent-4"
-                    dark
-                    label
-                    small
-                  >
-                    {{ text }}
-                  </v-chip>
-                </template>
-              </v-file-input>
+              <v-col cols="12" sm="12" md="4" lg="2">
+                <p class="mt-4 ml-4">Company Registration :</p>
+              </v-col>
+              <v-col cols="12" sm="12" md="8" lg="10">
+                <v-file-input
+                  v-model="files"
+                  color="primary accent-4"
+                  label="Upload your Company Registration Certificate"
+                  counter
+                  placeholder="Click here to upload"
+                  outlined
+                  :show-size="1000"
+                >
+                  <template v-slot:selection="{ index, text }">
+                    <v-chip
+                      v-if="index < 2"
+                      color="deep-purple accent-4"
+                      dark
+                      label
+                      small
+                    >
+                      {{ text }}
+                    </v-chip>
+                  </template>
+                </v-file-input>
+              </v-col>
             </v-row>
           </v-card-text>
           <v-card-actions>
