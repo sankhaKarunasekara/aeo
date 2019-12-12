@@ -34,55 +34,41 @@
       <v-container fluid>
         <v-layout>
           <v-tabs>
-            <v-tab>
+            <v-tab class="grey lighten-4">
               <v-icon left>mdi-office-building</v-icon>
               Company Details
             </v-tab>
-            <v-tab>
+            <v-tab class="grey lighten-4">
               <v-icon left>mdi-account-details</v-icon>
               Operational Details
             </v-tab>
-            <v-tab>
+            <v-tab class="grey lighten-4">
               <v-icon left>mdi-map</v-icon>
               Location Details
             </v-tab>
-            <v-tab>
+            <v-tab class="grey lighten-4">
               <v-icon left>mdi-account</v-icon>
               Contact Person
             </v-tab>
-            <!-- <v-tab>
-              <v-icon left>mdi-point</v-icon>
-              Self Assessment
-            </v-tab> -->
+            <v-tab class="grey lighten-4">
+              <v-icon left>mdi-file-document-edit-outline</v-icon>
+              Declaration
+            </v-tab>
 
-            <v-tab-item>
+            <v-tab-item class="grey lighten-4">
               <CompanyDetails />
             </v-tab-item>
-            <v-tab-item>
+            <v-tab-item class="grey lighten-4">
               <OperationalDetails />
             </v-tab-item>
-            <v-tab-item>
+            <v-tab-item class="grey lighten-4">
               <Address />
             </v-tab-item>
-            <v-tab-item>
-              <v-card flat>
-                <v-card-text>
-                  <p>
-                    Sed aliquam ultrices mauris. Donec posuere vulputate arcu.
-                    Morbi ac felis. Etiam feugiat lorem non metus. Sed a libero.
-                  </p>
-                </v-card-text>
-              </v-card>
+            <v-tab-item class="grey lighten-4">
+              <ContactPerson />
             </v-tab-item>
-            <v-tab-item>
-              <v-card flat>
-                <v-card-text>
-                  <p>
-                    Sed aliquam ultrices mauris. Donec posuere vulputate arcu.
-                    Morbi ac felis. Etiam feugiat lorem non metus. Sed a libero.
-                  </p>
-                </v-card-text>
-              </v-card>
+            <v-tab-item class="grey lighten-4">
+              <Declartion />
             </v-tab-item>
           </v-tabs>
         </v-layout>
@@ -101,13 +87,17 @@ import router from "../router";
 import CompanyDetails from "../components/CompanyDetails";
 import OperationalDetails from "../components/OperationalDetails";
 import Address from "../components/Address";
+import ContactPerson from "../components/ContactPerson";
+import Declartion from "../components/Declaration";
 
 export default {
   name: "CEOCompliance",
   components: {
     CompanyDetails,
     OperationalDetails,
-    Address
+    Address,
+    ContactPerson,
+    Declartion
   },
   methods: {
     signOut: function() {

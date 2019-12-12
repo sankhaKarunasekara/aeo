@@ -19,19 +19,28 @@
             <v-flex xs12 md6>
               <v-col>
                 <v-col cols="12">
-                  <v-text-field label="Comapany Name*" required></v-text-field>
+                  <v-text-field
+                    label="Comapany Name*"
+                    outlined
+                    required
+                  ></v-text-field>
                 </v-col>
                 <v-col cols="12">
-                  <v-text-field label="TIN Number*" required></v-text-field>
+                  <v-text-field
+                    label="TIN Number*"
+                    outlined
+                    required
+                  ></v-text-field>
                 </v-col>
                 <v-col cols="12">
                   <v-text-field
                     label="Email*"
                     type="email"
                     required
+                    outlined
                   ></v-text-field>
                 </v-col>
-                <v-col cols="12">
+                <!-- <v-col cols="12">
                   <v-text-field
                     label="Password*"
                     :type="showPassword ? 'text' : 'password'"
@@ -48,8 +57,9 @@
                     @click:append="showConPassword = !showConPassword"
                     required
                   ></v-text-field>
-                </v-col> </v-col
-            ></v-flex>
+                </v-col> -->
+              </v-col></v-flex
+            >
             <v-flex xs12 md6>
               <v-container bg fill-height grid-list-md text-xs-center>
                 <v-layout row wrap align-center>

@@ -10,14 +10,16 @@
               >
             </v-list-item-content>
             <v-list-item-action>
-              <v-btn @click="addNewTab()" color="primary">
-                <v-icon color="white">mdi-plus</v-icon>
-                Add Location
-              </v-btn>
-              <!-- <v-btn @click="deleteTab()" color="error">
-                <v-icon color="white">mdi-delete</v-icon>
-                Add Location
-              </v-btn> -->
+              <span>
+                <v-btn @click="addNewTab()" color="primary">
+                  <v-icon color="white">mdi-plus</v-icon>
+                  Add Location
+                </v-btn>
+                <v-btn @click="deleteTab()" color="error">
+                  <v-icon color="white">mdi-delete</v-icon>
+                  Delete Location
+                </v-btn>
+              </span>
             </v-list-item-action>
           </v-list-item>
           <v-card-text>
@@ -38,7 +40,7 @@
                 :key="tab.index"
                 :href="`#tab-${tab.index}`"
               >
-                Location {{ tab.index }}
+                Location {{ tab.index + 1 }}
               </v-tab>
 
               <v-tab-item
@@ -50,7 +52,28 @@
                   <v-card-text
                     ><v-card outlined>
                       <v-card-title>
-                        Location {{ tab.index }} Details
+                        <v-list-item>
+                          <v-list-item-avatar>
+                            <v-icon class="grey lighten-1 white--text"
+                              >mdi-map-marker</v-icon
+                            >
+                          </v-list-item-avatar>
+
+                          <v-list-item-content>
+                            <v-list-item-title
+                              >Location {{ tab.index + 1 }}</v-list-item-title
+                            >
+                            <v-list-item-subtitle></v-list-item-subtitle>
+                          </v-list-item-content>
+
+                          <v-list-item-action>
+                            <v-btn icon>
+                              <v-icon color="grey lighten-1"
+                                >mdi-information</v-icon
+                              >
+                            </v-btn>
+                          </v-list-item-action>
+                        </v-list-item>
                       </v-card-title>
                       <v-card-text class="px-8">
                         <v-row>
@@ -116,8 +139,81 @@
                             ></v-text-field>
                           </v-col>
                         </v-row>
-                      </v-card-text> </v-card
-                  ></v-card-text>
+
+                        <v-subheader class="pl-0"
+                          ><h3>Attachments</h3></v-subheader
+                        >
+                        <v-divider class="pt-4"></v-divider>
+
+                        <v-row>
+                          <v-col cols="12" sm="12" md="12">
+                            <v-row>
+                              <v-col cols="12" sm="12" md="4">
+                                <p class="mt-0 ml-4">
+                                  Drawn route map up to the permises from
+                                  nearest city
+                                </p>
+                              </v-col>
+                              <v-col cols="12" sm="12" md="8">
+                                <v-file-input
+                                  v-model="files"
+                                  color="primary accent-4"
+                                  label="Drawn route map up to the permises from
+                                  nearest city"
+                                  counter
+                                  placeholder="Click here to upload"
+                                  outlined
+                                  :show-size="1000"
+                                >
+                                  <template v-slot:selection="{ index, text }">
+                                    <v-chip
+                                      v-if="index < 2"
+                                      color="deep-purple accent-4"
+                                      dark
+                                      label
+                                      small
+                                    >
+                                      {{ text }}
+                                    </v-chip>
+                                  </template>
+                                </v-file-input>
+                              </v-col>
+                            </v-row>
+                            <v-row>
+                              <v-col cols="12" sm="12" md="4">
+                                <p class="mt-2 ml-4">
+                                  Site Plan
+                                </p>
+                              </v-col>
+                              <v-col cols="12" sm="12" md="8">
+                                <v-file-input
+                                  v-model="files"
+                                  color="primary accent-4"
+                                  label="Site plan"
+                                  counter
+                                  placeholder="Click here to upload"
+                                  outlined
+                                  :show-size="1000"
+                                >
+                                  <template v-slot:selection="{ index, text }">
+                                    <v-chip
+                                      v-if="index < 2"
+                                      color="deep-purple accent-4"
+                                      dark
+                                      label
+                                      small
+                                    >
+                                      {{ text }}
+                                    </v-chip>
+                                  </template>
+                                </v-file-input>
+                              </v-col>
+                            </v-row>
+                          </v-col>
+                        </v-row>
+                      </v-card-text>
+                    </v-card></v-card-text
+                  >
                 </v-card>
               </v-tab-item>
             </v-tabs>
@@ -147,7 +243,21 @@ export default {
     prevIcon: false,
     nextIcon: false,
     right: false,
-    tabs: []
+    tabs: [
+      {
+        index: 0,
+        data: {
+          place: "",
+          address: "",
+          city: "",
+          district: "",
+          postalCode: "",
+          phone: "",
+          faxNumber: "",
+          emailAddress: ""
+        }
+      }
+    ]
   }),
 
   created() {
@@ -155,17 +265,18 @@ export default {
   },
 
   watch: {
-    activeTab() {
-      console.log(this.activeTab);
-      this.activeTab = this.tabs.length;
-    }
+    // tabs() {
+    //   this.activeTab = this.tabs.length - 1;
+    //   console.log(this.activeTab);
+    // }
   },
 
   methods: {
     initialize() {
+      // this.activeTab = 0;
       this.tabs = [
         {
-          index: 1,
+          index: 0,
           data: {
             place: "",
             address: "",
@@ -182,7 +293,7 @@ export default {
 
     addNewTab() {
       const tab = {
-        index: this.tabs.length + 1,
+        index: this.tabs.length,
         data: {
           place: "",
           address: "",
@@ -197,12 +308,12 @@ export default {
       console.log(this.tabs);
 
       this.tabs = [...this.tabs, tab];
-      this.activeTab = this.tabs.length;
     },
 
     deleteTab() {
-      this.tabs.splice(-1, 1);
-      this.activeTab = this.tabs.length;
+      if (this.tabs.length != 1) {
+        this.tabs.splice(-1, 1);
+      }
     }
   }
 };
