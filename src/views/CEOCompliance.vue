@@ -51,6 +51,10 @@
               Contact Person
             </v-tab>
             <v-tab class="grey lighten-4">
+              <v-icon left>mdi-file-document</v-icon>
+              Commercial Record Keeping
+            </v-tab>
+            <v-tab class="grey lighten-4">
               <v-icon left>mdi-file-document-edit-outline</v-icon>
               Declaration
             </v-tab>
@@ -66,6 +70,9 @@
             </v-tab-item>
             <v-tab-item class="grey lighten-4">
               <ContactPerson />
+            </v-tab-item>
+            <v-tab-item class="grey lighten-4">
+              <CommercialRecords />
             </v-tab-item>
             <v-tab-item class="grey lighten-4">
               <Declartion />
@@ -88,6 +95,7 @@ import CompanyDetails from "../components/CompanyDetails";
 import OperationalDetails from "../components/OperationalDetails";
 import Address from "../components/Address";
 import ContactPerson from "../components/ContactPerson";
+import CommercialRecords from "../components/CommercialRecords";
 import Declartion from "../components/Declaration";
 
 export default {
@@ -97,6 +105,7 @@ export default {
     OperationalDetails,
     Address,
     ContactPerson,
+    CommercialRecords,
     Declartion
   },
   methods: {
