@@ -526,7 +526,7 @@
 
 <script>
 export default {
-  name: "CommercialRecords",
+  name: "LegalCompliance",
   data: vm => ({
     partner: "",
     frequency: ["Daily", "Weekly", "Monthly", "Other"],

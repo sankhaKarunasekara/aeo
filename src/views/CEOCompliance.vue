@@ -47,6 +47,14 @@
               Location Details
             </v-tab>
             <v-tab class="grey lighten-4">
+              <v-icon left>mdi-map</v-icon>
+              Legal Compliance
+            </v-tab>
+            <v-tab class="grey lighten-4">
+              <v-icon left>mdi-map</v-icon>
+              Financial Compliance
+            </v-tab>
+            <v-tab class="grey lighten-4">
               <v-icon left>mdi-account</v-icon>
               Contact Person
             </v-tab>
@@ -67,6 +75,12 @@
             </v-tab-item>
             <v-tab-item class="grey lighten-4">
               <Address />
+            </v-tab-item>
+            <v-tab-item class="grey lighten-4">
+              <LegalCompliance />
+            </v-tab-item>
+            <v-tab-item class="grey lighten-4">
+              <FinancialCompliance />
             </v-tab-item>
             <v-tab-item class="grey lighten-4">
               <ContactPerson />
@@ -94,6 +108,8 @@ import router from "../router";
 import CompanyDetails from "../components/CompanyDetails";
 import OperationalDetails from "../components/OperationalDetails";
 import Address from "../components/Address";
+import LegalCompliance from "../components/LegalCompliance";
+import FinancialCompliance from "../components/FinancialCompliance";
 import ContactPerson from "../components/ContactPerson";
 import CommercialRecords from "../components/CommercialRecords";
 import Declartion from "../components/Declaration";
@@ -104,6 +120,8 @@ export default {
     CompanyDetails,
     OperationalDetails,
     Address,
+    LegalCompliance,
+    FinancialCompliance,
     ContactPerson,
     CommercialRecords,
     Declartion
