@@ -22,11 +22,11 @@
               </h3>
               <v-spacer></v-spacer>
               <span>
-                <v-btn @click="addNewPartner()" class="mr-4" color="primary">
+                <v-btn @click="addNewLiablilityDetails()" class="mr-4" color="primary">
                   <v-icon color="white">mdi-plus</v-icon>
                   Add Record
                 </v-btn>
-                <v-btn @click="deletePartner()" color="error">
+                <v-btn @click="deleteLiabilityDetail()" color="error">
                   <v-icon color="white">mdi-delete</v-icon>
                 </v-btn>
               </span>
@@ -35,18 +35,18 @@
 
             <v-tabs>
               <v-tab
-                v-for="partner in partners"
-                :key="partner.index"
-                :href="`#tab-${partner.index}`"
+                v-for="liabilityDetail in liabilityDetails"
+                :key="liabilityDetail.index"
+                :href="`#tab-${liabilityDetail.index}`"
               >
                 <v-icon left>mdi-account</v-icon>
-                Partner {{ partner.index + 1 }}
+                Year {{ liabilityDetail.index + 1 }}
               </v-tab>
               <v-tabs-slider></v-tabs-slider>
               <v-tab-item
-                v-for="partner in partners"
-                :key="partner.index"
-                :value="'tab-' + partner.index"
+                v-for="liabilityDetail in liabilityDetails"
+                :key="liabilityDetail.index"
+                :value="'tab-' + liabilityDetail.index"
               >
                 <v-card flat>
                   <v-card-text>
@@ -96,7 +96,7 @@
             >
             <v-row>
               <v-col cols="12" sm="12" md="2">
-                <p class="mt-4 ml-4">Select Year</p>
+                <p class="mt-4 ml-4">Select Year 1</p>
               </v-col>
               <v-col cols="12" sm="12" md="5">
                 <v-menu
@@ -132,7 +132,7 @@
                   v-model="files"
                   color="deep-purple accent-4"
                   counter
-                  label="Upload your Transport Document (Gate Pass)"
+                  label="Upload Balance Sheet"
                   multiple
                   placeholder="Click here to upload"
                   outlined
@@ -154,7 +154,7 @@
             </v-row>
             <v-row>
               <v-col cols="12" sm="12" md="2">
-                <p class="mt-4 ml-4">Select Year</p>
+                <p class="mt-4 ml-4">Select Year 2</p>
               </v-col>
               <v-col cols="12" sm="12" md="5">
                 <v-menu
@@ -190,7 +190,7 @@
                   v-model="files"
                   color="deep-purple accent-4"
                   counter
-                  label="Upload your Transport Document (Gate Pass)"
+                  label="Upload Balance Sheet"
                   multiple
                   placeholder="Click here to upload"
                   outlined
@@ -212,7 +212,7 @@
             </v-row>
             <v-row>
               <v-col cols="12" sm="12" md="2">
-                <p class="mt-4 ml-4">Select Year</p>
+                <p class="mt-4 ml-4">Select Year 3</p>
               </v-col>
               <v-col cols="12" sm="12" md="5">
                 <v-menu
@@ -248,7 +248,7 @@
                   v-model="files"
                   color="deep-purple accent-4"
                   counter
-                  label="Upload your Transport Document (Gate Pass)"
+                  label="Upload Balance Sheet"
                   multiple
                   placeholder="Click here to upload"
                   outlined
@@ -276,7 +276,7 @@
             >
             <v-row>
               <v-col cols="12" sm="12" md="2">
-                <p class="mt-4 ml-4">Select Year</p>
+                <p class="mt-4 ml-4">Select Year 1</p>
               </v-col>
               <v-col cols="12" sm="12" md="5">
                 <v-menu
@@ -312,7 +312,7 @@
                   v-model="files"
                   color="deep-purple accent-4"
                   counter
-                  label="Upload your Transport Document (Gate Pass)"
+                  label="Upload Solvency Certificates by the External Auditor"
                   multiple
                   placeholder="Click here to upload"
                   outlined
@@ -334,7 +334,7 @@
             </v-row>
             <v-row>
               <v-col cols="12" sm="12" md="2">
-                <p class="mt-4 ml-4">Select Year</p>
+                <p class="mt-4 ml-4">Select Year 2</p>
               </v-col>
               <v-col cols="12" sm="12" md="5">
                 <v-menu
@@ -370,7 +370,7 @@
                   v-model="files"
                   color="deep-purple accent-4"
                   counter
-                  label="Upload your Transport Document (Gate Pass)"
+                  label="Upload Solvency Certificates by the External Auditor"
                   multiple
                   placeholder="Click here to upload"
                   outlined
@@ -392,7 +392,7 @@
             </v-row>
             <v-row>
               <v-col cols="12" sm="12" md="2">
-                <p class="mt-4 ml-4">Select Year</p>
+                <p class="mt-4 ml-4">Select Year 3</p>
               </v-col>
               <v-col cols="12" sm="12" md="5">
                 <v-menu
@@ -428,7 +428,7 @@
                   v-model="files"
                   color="deep-purple accent-4"
                   counter
-                  label="Upload your Transport Document (Gate Pass)"
+                  label="Upload Solvency Certificates by the External Auditor"
                   multiple
                   placeholder="Click here to upload"
                   outlined
@@ -468,19 +468,7 @@ export default {
     frequency: ["Daily", "Weekly", "Monthly", "Other"],
     bankAccountTypes: ["SAVINGS", "NRFC", "RFC", "BFCA", "OTHER"],
     automatedOrManual: ["Automated", "Manual"],
-    partners: [
-      {
-        index: 0,
-        data: {
-          tin: "",
-          name: "",
-          address: "",
-          natureOfPartner: "",
-          partnerAgreement: ""
-        }
-      }
-    ],
-    bankAccounts: [
+    liabilityDetails: [
       {
         index: 0,
         data: {
@@ -521,7 +509,7 @@ export default {
     },
     initialize() {
       // this.activeTab = 0;
-      this.partners = [
+      this.liabilityDetails = [
         {
           index: 0,
           data: {
@@ -533,24 +521,11 @@ export default {
           }
         }
       ];
-      this.bankAccounts = [
-        {
-          index: 0,
-          data: {
-            bank: "",
-            branch: "",
-            acNumber: "",
-            acType: "",
-            acHoldersName: "",
-            openDate: ""
-          }
-        }
-      ];
     },
 
-    addNewPartner() {
-      const partner = {
-        index: this.partners.length,
+    addNewLiablilityDetails() {
+      const liabilityDetail = {
+        index: this.liabilityDetails.length,
         data: {
           tin: "",
           name: "",
@@ -560,29 +535,7 @@ export default {
         }
       };
 
-      this.partners = [...this.partners, partner];
-    },
-
-    addNewBankAccount() {
-      const bankAccount = {
-        index: this.bankAccounts.length,
-        data: {
-          bank: "",
-          branch: "",
-          acNumber: "",
-          acType: "",
-          acHoldersName: "",
-          openDate: ""
-        }
-      };
-
-      this.bankAccounts = [...this.bankAccounts, bankAccount];
-    },
-
-    deleteBankAccount() {
-      if (this.bankAccounts.length != 1) {
-        this.bankAccounts.splice(-1, 1);
-      }
+      this.liabilityDetails = [...this.liabilityDetails, liabilityDetail];
     }
   }
 };

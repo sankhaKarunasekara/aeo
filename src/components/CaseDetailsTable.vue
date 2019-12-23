@@ -11,9 +11,7 @@
         <v-spacer></v-spacer>
         <v-dialog v-model="dialog" max-width="600">
           <template v-slot:activator="{ on }">
-            <v-btn color="primary" dark class="mb-2" v-on="on"
-              >New Business Partner</v-btn
-            >
+            <v-btn color="primary" dark class="mb-2" v-on="on">New Case</v-btn>
           </template>
           <v-card background="#F5F5F5" flat>
             <v-card-title>
@@ -22,38 +20,65 @@
             <v-card-text>
               <v-container>
                 <v-row>
+                  <v-col cols="12" sm="12" md="6">
+                    <v-text-field
+                      outlined="true"
+                      v-model="editedItem.year"
+                      label="Year"
+                    ></v-text-field>
+                  </v-col>
+                  <v-col cols="12" sm="12" md="6">
+                    <v-select
+                      outlined
+                      v-model="editedItem.typeOfCase"
+                      :items="typeOfCase"
+                      label="Type (Import or Export)"
+                    ></v-select>
+                  </v-col>
+                </v-row>
+                <v-row>
                   <v-col cols="12" sm="12" md="12">
                     <v-text-field
                       outlined="true"
-                      v-model="editedItem.name"
-                      label="Item name"
+                      v-model="editedItem.caseNo"
+                      label="Case No"
                     ></v-text-field>
                   </v-col>
                 </v-row>
                 <v-row>
-                  <v-col cols="12" sm="12" md="6">
-                    <v-select
-                      outlined
-                      v-model="editedItem.type"
-                      :items="typeImportOrExport"
-                      label="Type (Import or Export)"
-                    ></v-select>
-                  </v-col>
-                  <v-col cols="12" sm="12" md="6">
-                    <v-select
-                      :items="countriesList"
-                      v-model="editedItem.country"
-                      label="Country of Export/Import"
-                      outlined
-                    ></v-select>
+                  <v-col cols="12" sm="12" md="12">
+                    <v-text-field
+                      outlined="true"
+                      v-model="editedItem.offence"
+                      label="Case No"
+                    ></v-text-field>
                   </v-col>
                 </v-row>
                 <v-row>
                   <v-col cols="12" sm="12" md="12">
                     <v-text-field
                       outlined
-                      v-model="editedItem.annualValue"
-                      label="Annual Value"
+                      v-model="editedItem.penaltyAmount"
+                      label="Penalty Amount"
+                    ></v-text-field>
+                  </v-col>
+                </v-row>
+
+                <v-row>
+                  <v-col cols="12" sm="12" md="12">
+                    <v-text-field
+                      outlined
+                      v-model="editedItem.personInvolved"
+                      label="Penalty Amount"
+                    ></v-text-field>
+                  </v-col>
+                </v-row>
+                <v-row>
+                  <v-col cols="12" sm="12" md="12">
+                    <v-text-field
+                      outlined
+                      v-model="editedItem.designation"
+                      label="Position in the applicant Company"
                     ></v-text-field>
                   </v-col>
                 </v-row>
@@ -86,45 +111,58 @@
 export default {
   data: () => ({
     countriesList: ["India", "China"],
-    typeImportOrExport: ["Import", "Export"],
+    typeOfCase: ["Customs Case", "Inland Revenue Case"],
     dialog: false,
     headers: [
       {
-        text: "TIN",
+        text: "Year",
         align: "left",
         sortable: true,
-        value: "tin"
+        value: "year"
       },
       {
-        text: "Name",
+        text: "Case Type",
+        align: "left",
+        sortable: true,
+        value: "caseType"
+      },
+      {
+        text: "Case Number",
         align: "left",
         sortable: false,
-        value: "name"
+        value: "caseNo"
       },
-      { text: "Address", value: "address" },
-      { text: "Nature of Business", value: "businessType" },
-      { text: "Partner Agreement", value: "annualValue" },
+      { text: "Offence", value: "offence" },
+      { text: "Penalty Amount", value: "panaltyAmount" },
+      { text: "Person Involved", value: "personInvolved" },
+      { text: "Position in the applicant company", value: "designation" },
       { text: "Actions", value: "action", sortable: false }
     ],
     items: [],
     editedIndex: -1,
     editedItem: {
-      name: "",
-      country: 0,
-      type: 0,
-      annualValue: 0
+      year: "",
+      caseType: "",
+      caseNo: "",
+      offence: "",
+      panaltyAmount: "",
+      personInvolved: "",
+      designation: ""
     },
     defaultItem: {
-      name: "",
-      country: 0,
-      type: 0,
-      annualValue: 0
+      year: "",
+      caseType: "",
+      caseNo: "",
+      offence: "",
+      panaltyAmount: "",
+      personInvolved: "",
+      designation: ""
     }
   }),
 
   computed: {
     formTitle() {
-      return this.editedIndex === -1 ? "New Item" : "Edit Item";
+      return this.editedIndex === -1 ? "New Case" : "Edit Case";
     }
   },
 
@@ -142,10 +180,13 @@ export default {
     initialize() {
       this.items = [
         {
-          name: "Frozen Yogurt",
-          country: 159,
-          type: 6.0,
-          annualValue: 24
+          year: "",
+          caseType: "",
+          caseNo: "",
+          offence: "",
+          panaltyAmount: "",
+          personInvolved: "",
+          designation: ""
         }
       ];
     },

@@ -15,9 +15,8 @@
                   <v-icon color="white">mdi-plus</v-icon>
                   Add Location
                 </v-btn>
-                <v-btn @click="deleteTab()" color="error">
+                <v-btn @click="deleteTab()" class="ml-4" color="error">
                   <v-icon color="white">mdi-delete</v-icon>
-                  Delete Location
                 </v-btn>
               </span>
             </v-list-item-action>

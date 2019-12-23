@@ -6,7 +6,7 @@
           <v-list-item two-line>
             <v-list-item-content>
               <v-list-item-title class="headline"
-                >Commercial Record Keeping</v-list-item-title
+                >Legal Compliance Tab</v-list-item-title
               >
               <!-- <v-list-item-subtitle
                 >Mon, 12:30 PM, Mostly sunny</v-list-item-subtitle
@@ -18,498 +18,60 @@
           <v-card-text>
             <v-subheader class="pl-0"
               ><h3>
-                Business Partner(s) Details
+                Customs Case Details
               </h3>
-              <v-spacer></v-spacer>
-              <span>
-                <v-btn @click="addNewPartner()" class="mr-4" color="primary">
-                  <v-icon color="white">mdi-plus</v-icon>
-                  Add Partner
-                </v-btn>
-                <v-btn @click="deletePartner()" color="error">
-                  <v-icon color="white">mdi-delete</v-icon>
-                </v-btn>
-              </span>
             </v-subheader>
             <v-divider class="py-4"></v-divider>
+            <CaseDetailsTable />
 
-            <v-tabs>
-              <v-tab
-                v-for="partner in partners"
-                :key="partner.index"
-                :href="`#tab-${partner.index}`"
-              >
-                <v-icon left>mdi-account</v-icon>
-                Partner {{ partner.index + 1 }}
-              </v-tab>
-              <v-tabs-slider></v-tabs-slider>
-              <v-tab-item
-                v-for="partner in partners"
-                :key="partner.index"
-                :value="'tab-' + partner.index"
-              >
-                <v-card flat>
-                  <v-card-text>
-                    <v-row>
-                      <v-col cols="12">
-                        <v-text-field
-                          label="Name*"
-                          hint="www.example.com/page"
-                          required
-                          outlined
-                        ></v-text-field>
-                      </v-col>
-                    </v-row>
-                    <v-row>
-                      <v-col cols="12" md="6">
-                        <v-text-field
-                          label="TIN Number*"
-                          hint="www.example.com/page"
-                          required
-                          outlined
-                        ></v-text-field>
-                      </v-col>
-                      <v-col cols="12" md="6">
-                        <v-text-field
-                          label="Nature of Partner"
-                          hint="www.example.com/page"
-                          outlined=""
-                        ></v-text-field>
-                      </v-col>
-                    </v-row>
-                    <v-row
-                      ><v-col cols="12">
-                        <v-text-field
-                          label="Address"
-                          hint="www.example.com/page"
-                          outlined=""
-                        ></v-text-field> </v-col
-                    ></v-row>
-                    <v-row>
-                      <v-col cols="12" sm="12" md="4">
-                        <p class="mt-4 ml-4">Partner Agreement</p>
-                      </v-col>
-                      <v-col cols="12" sm="12" md="8">
-                        <v-file-input
-                          v-model="files"
-                          color="deep-purple accent-4"
-                          counter
-                          label="Upload the partner agreement"
-                          multiple
-                          placeholder="Click here to upload"
-                          outlined
-                          :show-size="1000"
-                        >
-                          <template v-slot:selection="{ index, text }">
-                            <v-chip
-                              v-if="index < 2"
-                              color="deep-purple accent-4"
-                              dark
-                              label
-                              small
-                            >
-                              {{ text }}
-                            </v-chip>
-                          </template>
-                        </v-file-input>
-                      </v-col>
-                    </v-row>
-                  </v-card-text>
-                </v-card>
-              </v-tab-item>
-            </v-tabs>
-
-            <v-subheader class="pl-0"
+            <v-subheader class="pl-0 mt-8"
               ><h3>
-                Company Bank Account Details
-              </h3>
-              <v-spacer></v-spacer>
-              <span>
-                <v-btn
-                  @click="addNewBankAccount()"
-                  class="mr-4"
-                  color="primary"
-                >
-                  <v-icon color="white">mdi-plus</v-icon>
-                  Add Bank Account
-                </v-btn>
-                <v-btn @click="deleteBankAccount()" color="error">
-                  <v-icon color="white">mdi-delete</v-icon>
-                </v-btn>
-              </span></v-subheader
-            >
-            <v-divider class="py-4"></v-divider>
-            <v-tabs>
-              <v-tab
-                v-for="bankAccount in bankAccounts"
-                :key="bankAccount.index"
-                :href="`#tab-${bankAccount.index}`"
-              >
-                <v-icon left>mdi-account</v-icon>
-                Account {{ bankAccount.index + 1 }}
-              </v-tab>
-              <v-tabs-slider></v-tabs-slider>
-              <v-tab-item
-                v-for="bankAccount in bankAccounts"
-                :key="bankAccount.index"
-                :value="'tab-' + bankAccount.index"
-              >
-                <v-card flat class="pa-4">
-                  <v-row>
-                    <v-col cols="12" md="6">
-                      <v-text-field
-                        label="Bank*"
-                        hint="www.example.com/page"
-                        required
-                        outlined
-                      ></v-text-field>
-                    </v-col>
-                    <v-col cols="12" md="6">
-                      <v-text-field
-                        label="Branch"
-                        hint="www.example.com/page"
-                        outlined=""
-                      ></v-text-field>
-                    </v-col>
-                  </v-row>
-
-                  <v-row>
-                    <v-col cols="12" md="6">
-                      <v-select
-                        :items="bankAccountTypes"
-                        label="A/C Type"
-                        outlined
-                      ></v-select>
-                    </v-col>
-
-                    <v-col cols="12" md="6">
-                      <v-text-field
-                        label="A/C Number"
-                        hint="www.example.com/page"
-                        outlined=""
-                      ></v-text-field>
-                    </v-col>
-                  </v-row>
-                  <v-row
-                    ><v-col cols="12" md="12">
-                      <v-text-field
-                        label="A/C Holders Name"
-                        hint="www.example.com/page"
-                        outlined=""
-                      ></v-text-field>
-                    </v-col>
-                    <v-col cols="12" sm="12" md="6">
-                      <v-menu
-                        ref="menu1"
-                        v-model="menu1"
-                        :close-on-content-click="false"
-                        transition="scale-transition"
-                        offset-y
-                        full-width
-                        max-width="290px"
-                        min-width="290px"
-                      >
-                        <template v-slot:activator="{ on }">
-                          <v-text-field
-                            v-model="dateFormatted"
-                            hint="MM/DD/YYYY format"
-                            label="Open date:"
-                            outlined
-                            prepend-icon="event"
-                            @blur="date = parseDate(dateFormatted)"
-                            v-on="on"
-                          ></v-text-field>
-                        </template>
-                        <v-date-picker
-                          v-model="date"
-                          no-title
-                          @input="menu1 = false"
-                        ></v-date-picker>
-                      </v-menu>
-                    </v-col>
-                  </v-row>
-                </v-card>
-              </v-tab-item>
-            </v-tabs>
-            <v-subheader class="pl-0"
-              ><h3>
-                Procedure for administrating Licenses & Authorizations for
-                Exports & Imports
+                Attachments
               </h3></v-subheader
             >
             <v-divider class="py-4"></v-divider>
-
             <v-row>
-              <v-col cols="12" sm="12"
-                ><v-file-input
-                  v-model="files"
-                  color="deep-purple accent-4"
-                  counter
-                  label="Upload your Procedure Document"
-                  multiple
-                  placeholder="Click here to upload the document"
-                  outlined
-                  :show-size="1000"
-                >
-                  <template v-slot:selection="{ index, text }">
-                    <v-chip
-                      v-if="index < 2"
-                      color="deep-purple accent-4"
-                      dark
-                      label
-                      small
-                    >
-                      {{ text }}
-                    </v-chip>
-                  </template>
-                </v-file-input>
-              </v-col>
-            </v-row>
-            <v-row>
-              <h4 class="ml-4 pb-4">
-                Add the details of the responsible officials
-              </h4>
-            </v-row>
-            <v-row>
-              <v-col cols="12" md="8">
-                <v-text-field label="Name" outlined></v-text-field>
-              </v-col>
-
-              <v-col cols="12" md="4">
-                <v-text-field label="Position" outlined></v-text-field>
-              </v-col>
-            </v-row>
-            <v-row>
-              <v-col cols="12" md="6">
-                <v-text-field label="E-mail" outlined></v-text-field>
-              </v-col>
-
-              <v-col cols="12" md="6">
-                <v-text-field label="Contact Number" outlined></v-text-field>
-              </v-col>
-            </v-row>
-
-            <v-subheader class="pl-0"
-              ><h3>
-                Procedure for administrating commercial records connected to
-                Exports & Imports
-              </h3></v-subheader
-            >
-            <v-divider class="py-4"></v-divider>
-
-            <v-row>
-              <v-col cols="12" sm="12"
-                ><v-file-input
-                  v-model="files"
-                  color="deep-purple accent-4"
-                  counter
-                  label="Upload your Procedure Document"
-                  multiple
-                  placeholder="Click here to upload the document"
-                  outlined
-                  :show-size="1000"
-                >
-                  <template v-slot:selection="{ index, text }">
-                    <v-chip
-                      v-if="index < 2"
-                      color="deep-purple accent-4"
-                      dark
-                      label
-                      small
-                    >
-                      {{ text }}
-                    </v-chip>
-                  </template>
-                </v-file-input>
-              </v-col>
-            </v-row>
-            <v-row>
-              <h4 class="ml-4 pb-4">
-                Add the details of the responsible officials
-              </h4>
-            </v-row>
-            <v-row>
-              <v-col cols="12" md="8">
-                <v-text-field label="Name" outlined></v-text-field>
-              </v-col>
-
-              <v-col cols="12" md="4">
-                <v-text-field label="Position" outlined></v-text-field>
-              </v-col>
-            </v-row>
-            <v-row>
-              <v-col cols="12" md="6">
-                <v-text-field label="E-mail" outlined></v-text-field>
-              </v-col>
-
-              <v-col cols="12" md="6">
-                <v-text-field label="Contact Number" outlined></v-text-field>
-              </v-col>
-            </v-row>
-
-            <v-subheader class="pl-0"
-              ><h3>
-                Procedure for verifying the accuracy of Customs Declarations (
-                CusDecs)
-              </h3></v-subheader
-            >
-            <v-divider class="py-4"></v-divider>
-
-            <v-row>
-              <v-col cols="12" sm="12"
-                ><v-file-input
-                  v-model="files"
-                  color="deep-purple accent-4"
-                  counter
-                  label="Upload your Procedure Document"
-                  multiple
-                  placeholder="Click here to upload the document"
-                  outlined
-                  :show-size="1000"
-                >
-                  <template v-slot:selection="{ index, text }">
-                    <v-chip
-                      v-if="index < 2"
-                      color="deep-purple accent-4"
-                      dark
-                      label
-                      small
-                    >
-                      {{ text }}
-                    </v-chip>
-                  </template>
-                </v-file-input>
-              </v-col>
-            </v-row>
-            <v-row>
-              <h4 class="ml-4 pb-4">
-                Add the details of the responsible officials
-              </h4>
-            </v-row>
-            <v-row>
-              <v-col cols="12" md="8">
-                <v-text-field label="Name" outlined></v-text-field>
-              </v-col>
-
-              <v-col cols="12" md="4">
-                <v-text-field label="Position" outlined></v-text-field>
-              </v-col>
-            </v-row>
-            <v-row>
-              <v-col cols="12" md="6">
-                <v-text-field label="E-mail" outlined></v-text-field>
-              </v-col>
-
-              <v-col cols="12" md="6">
-                <v-text-field label="Contact Number" outlined></v-text-field>
-              </v-col>
-            </v-row>
-
-            <v-subheader class="pl-0"
-              ><h3>
-                Procedure to ensure security of computerized record keeping
-                systems
-              </h3></v-subheader
-            >
-            <v-divider class="py-4"></v-divider>
-
-            <v-row>
-              <v-col cols="12" sm="12"
-                ><v-file-input
-                  v-model="files"
-                  color="deep-purple accent-4"
-                  counter
-                  label="Upload your Procedure Document"
-                  multiple
-                  placeholder="Click here to upload the document"
-                  outlined
-                  :show-size="1000"
-                >
-                  <template v-slot:selection="{ index, text }">
-                    <v-chip
-                      v-if="index < 2"
-                      color="deep-purple accent-4"
-                      dark
-                      label
-                      small
-                    >
-                      {{ text }}
-                    </v-chip>
-                  </template>
-                </v-file-input>
-              </v-col>
-            </v-row>
-            <v-row>
-              <h4 class="ml-4 pb-4">
-                Add the details of the responsible officials
-              </h4>
-            </v-row>
-            <v-row>
-              <v-col cols="12" md="8">
-                <v-text-field label="Name" outlined></v-text-field>
-              </v-col>
-
-              <v-col cols="12" md="4">
-                <v-text-field label="Position" outlined></v-text-field>
-              </v-col>
-            </v-row>
-            <v-row>
-              <v-col cols="12" md="6">
-                <v-text-field label="E-mail" outlined></v-text-field>
-              </v-col>
-
-              <v-col cols="12" md="6">
-                <v-text-field label="Contact Number" outlined></v-text-field>
-              </v-col>
-            </v-row>
-            <v-row>
-              <v-col cols="12" md="6">
-                <v-text-field label="E-mail" outlined></v-text-field>
-              </v-col>
-
-              <v-col cols="12" md="6">
-                <v-text-field label="Contact Number" outlined></v-text-field>
-              </v-col>
-            </v-row>
-            <v-row>
-              <v-col cols="12" sm="12" md="4">
-                <h3 class="mt-2 ml-4">
-                  How frequent backups are taken?
-                </h3>
+              <v-col cols="12" sm="12" md="6">
+                <p class="mt-4 ml-4">
+                  Is your company declared bankruptcy withn last 3 years
+                </p>
               </v-col>
               <v-col cols="12" sm="12" md="6">
-                <v-select
-                  :items="frequency"
-                  label="Frequency"
-                  outlined
-                ></v-select>
-              </v-col>
-              <v-col cols="12" sm="12" md="2">
-                <v-text-field label="Days" outlined></v-text-field>
+                <v-radio-group v-model="row" class="pl-sm-4" row>
+                  <v-radio label="Yes" value="yes"></v-radio>
+                  <v-radio label="No" value="no"></v-radio>
+                </v-radio-group>
               </v-col>
             </v-row>
             <v-row>
-              <v-col cols="12" sm="12" md="4">
-                <h3 class="mt-2 ml-4">
-                  For how many days backups can be restored
-                </h3>
+              <v-col cols="12" sm="12" md="6">
+                <p class="mt-4 ml-4">
+                  if yes, attach the declaration duly signed by CFO
+                </p>
               </v-col>
-              <v-col cols="12" sm="12" md="8">
-                <v-text-field label="Days" outlined></v-text-field>
-              </v-col>
-            </v-row>
-            <v-row>
-              <v-col cols="12" sm="12" md="4">
-                <h3 class="mt-2 ml-4">
-                  Is the backup process Automated/Manual
-                </h3>
-              </v-col>
-              <v-col cols="12" sm="12" md="8">
-                <v-select
-                  :items="automatedOrManual"
-                  label="Automated/Manual"
+              <v-col cols="12" sm="12" md="6">
+                <v-file-input
+                  v-model="files"
+                  color="deep-purple accent-4"
+                  counter
+                  label="Upload Solvency Certificates by the External Auditor"
+                  multiple
+                  placeholder="Click here to upload"
                   outlined
-                ></v-select>
+                  :show-size="1000"
+                >
+                  <template v-slot:selection="{ index, text }">
+                    <v-chip
+                      v-if="index < 2"
+                      color="deep-purple accent-4"
+                      dark
+                      label
+                      small
+                    >
+                      {{ text }}
+                    </v-chip>
+                  </template>
+                </v-file-input>
               </v-col>
             </v-row>
           </v-card-text>
@@ -525,8 +87,13 @@
 </template>
 
 <script>
+import CaseDetailsTable from "../components/CaseDetailsTable";
+
 export default {
   name: "LegalCompliance",
+  components: {
+    CaseDetailsTable
+  },
   data: vm => ({
     partner: "",
     frequency: ["Daily", "Weekly", "Monthly", "Other"],
@@ -585,15 +152,16 @@ export default {
     },
     initialize() {
       // this.activeTab = 0;
-      this.partners = [
+      this.customsCases = [
         {
           index: 0,
           data: {
-            tin: "",
-            name: "",
-            address: "",
-            natureOfPartner: "",
-            partnerAgreement: ""
+            year: "",
+            caseNo: "",
+            offence: "",
+            panaltyAmount: "",
+            personInvolved: "",
+            position: ""
           }
         }
       ];
@@ -612,24 +180,30 @@ export default {
       ];
     },
 
-    addNewPartner() {
-      const partner = {
-        index: this.partners.length,
+    addNewCustomsCase() {
+      const customsCase = {
+        index: this.customsCases.length,
         data: {
-          tin: "",
-          name: "",
-          address: "",
+          year: "",
+          caseNo: "",
+          offence: "",
           natureOfPartner: "",
           partnerAgreement: ""
         }
       };
 
-      this.partners = [...this.partners, partner];
+      this.customsCases = [...this.customsCases, customsCase];
     },
 
-    addNewBankAccount() {
-      const bankAccount = {
-        index: this.bankAccounts.length,
+    deleteCustomsCase() {
+      if (this.customsCases.length != 1) {
+        this.customsCases.splice(-1, 1);
+      }
+    },
+
+    addInlandRevenueCase() {
+      const inlandRevCase = {
+        index: this.inalandRevCases.length,
         data: {
           bank: "",
           branch: "",
@@ -640,12 +214,12 @@ export default {
         }
       };
 
-      this.bankAccounts = [...this.bankAccounts, bankAccount];
+      this.inalandRevCases = [...this.inalandRevCases, inlandRevCase];
     },
 
-    deleteBankAccount() {
-      if (this.bankAccounts.length != 1) {
-        this.bankAccounts.splice(-1, 1);
+    deleteInlandRevenueCase() {
+      if (this.inalandRevCases.length != 1) {
+        this.inalandRevCases.splice(-1, 1);
       }
     }
   }

@@ -47,11 +47,11 @@
               Location Details
             </v-tab>
             <v-tab class="grey lighten-4">
-              <v-icon left>mdi-map</v-icon>
+              <v-icon left>mdi-gavel</v-icon>
               Legal Compliance
             </v-tab>
             <v-tab class="grey lighten-4">
-              <v-icon left>mdi-map</v-icon>
+              <v-icon left>mdi-finance</v-icon>
               Financial Compliance
             </v-tab>
             <v-tab class="grey lighten-4">
@@ -65,6 +65,11 @@
             <v-tab class="grey lighten-4">
               <v-icon left>mdi-file-document-edit-outline</v-icon>
               Declaration
+            </v-tab>
+
+            <v-tab class="grey lighten-4">
+              <v-icon left>mdi-account-edit</v-icon>
+              Self Assignment
             </v-tab>
 
             <v-tab-item class="grey lighten-4">
@@ -91,6 +96,9 @@
             <v-tab-item class="grey lighten-4">
               <Declartion />
             </v-tab-item>
+            <v-tab-item class="grey lighten-4">
+              <SelfAssessment />
+            </v-tab-item>
           </v-tabs>
         </v-layout>
       </v-container>
@@ -113,6 +121,9 @@ import FinancialCompliance from "../components/FinancialCompliance";
 import ContactPerson from "../components/ContactPerson";
 import CommercialRecords from "../components/CommercialRecords";
 import Declartion from "../components/Declaration";
+import SelfAssessment from "../components/SelfAssessment";
+
+// import Questionaire from "../views/Questionnaire";
 
 export default {
   name: "CEOCompliance",
@@ -124,7 +135,8 @@ export default {
     FinancialCompliance,
     ContactPerson,
     CommercialRecords,
-    Declartion
+    Declartion,
+    SelfAssessment
   },
   methods: {
     signOut: function() {
