@@ -36,6 +36,7 @@
                   <v-text-field
                     label="Email*"
                     type="email"
+                    v-model="signUpDetails.email"
                     required
                     outlined
                   ></v-text-field>
@@ -73,7 +74,15 @@
                       </template>
                     </v-checkbox>
                     <v-row justify="center">
-                      <v-btn to="/Questionnaire" color="primary">Next</v-btn>
+                      <router-link
+                        :to="{
+                          name: 'questionnaire',
+                          params: { email: signUpDetails.email }
+                        }"
+                        color="primary"
+                      >
+                        <v-btn class="primary">Next</v-btn></router-link
+                      >
                     </v-row>
                   </v-flex>
                 </v-layout>
@@ -87,6 +96,8 @@
 </template>
 
 <script>
+// import firebase from "firebase";
+// import router from "../router";
 export default {
   name: "SignUp",
   data: () => ({
@@ -100,6 +111,11 @@ export default {
       required: value => !!value || "Required.",
       min: v => v.length >= 8 || "Min 8 characters",
       emailMatch: () => "The email and password you entered don't match"
+    },
+    signUpDetails: {
+      name: "",
+      email: "",
+      password: ""
     }
   })
 };

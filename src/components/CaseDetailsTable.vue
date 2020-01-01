@@ -2,7 +2,7 @@
   <v-data-table
     :headers="headers"
     :items="items"
-    sort-by="country"
+    sort-by="year"
     class="elevation-1"
   >
     <template v-slot:top>
@@ -30,7 +30,7 @@
                   <v-col cols="12" sm="12" md="6">
                     <v-select
                       outlined
-                      v-model="editedItem.typeOfCase"
+                      v-model="editedItem.caseType"
                       :items="typeOfCase"
                       label="Type (Import or Export)"
                     ></v-select>
@@ -48,9 +48,9 @@
                 <v-row>
                   <v-col cols="12" sm="12" md="12">
                     <v-text-field
-                      outlined="true"
+                      outlined
                       v-model="editedItem.offence"
-                      label="Case No"
+                      label="Offence"
                     ></v-text-field>
                   </v-col>
                 </v-row>
@@ -63,13 +63,12 @@
                     ></v-text-field>
                   </v-col>
                 </v-row>
-
                 <v-row>
                   <v-col cols="12" sm="12" md="12">
                     <v-text-field
                       outlined
                       v-model="editedItem.personInvolved"
-                      label="Penalty Amount"
+                      label="Person Involved"
                     ></v-text-field>
                   </v-col>
                 </v-row>
@@ -123,7 +122,7 @@ export default {
       {
         text: "Case Type",
         align: "left",
-        sortable: true,
+        sortable: false,
         value: "caseType"
       },
       {
@@ -132,10 +131,19 @@ export default {
         sortable: false,
         value: "caseNo"
       },
-      { text: "Offence", value: "offence" },
-      { text: "Penalty Amount", value: "panaltyAmount" },
-      { text: "Person Involved", value: "personInvolved" },
-      { text: "Position in the applicant company", value: "designation" },
+      { text: "Offence", sortable: false, value: "offence" },
+      {
+        text: "Penalty Amount",
+        sortable: false,
+        align: "left",
+        value: "penaltyAmount"
+      },
+      { text: "Person Involved", sortable: false, value: "personInvolved" },
+      {
+        text: "Position in the applicant company",
+        sortable: false,
+        value: "designation"
+      },
       { text: "Actions", value: "action", sortable: false }
     ],
     items: [],
@@ -145,7 +153,7 @@ export default {
       caseType: "",
       caseNo: "",
       offence: "",
-      panaltyAmount: "",
+      penaltyAmount: "",
       personInvolved: "",
       designation: ""
     },
@@ -154,7 +162,7 @@ export default {
       caseType: "",
       caseNo: "",
       offence: "",
-      panaltyAmount: "",
+      penaltyAmount: "",
       personInvolved: "",
       designation: ""
     }
@@ -184,7 +192,7 @@ export default {
           caseType: "",
           caseNo: "",
           offence: "",
-          panaltyAmount: "",
+          penaltyAmount: "",
           personInvolved: "",
           designation: ""
         }

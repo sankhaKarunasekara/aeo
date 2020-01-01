@@ -46,12 +46,15 @@
           </v-list-item>
         </v-list>
         <SelfAssessment />
+        <v-btn color="primary" class="ma-8" justify-center @click="signUp">
+          Submit
+        </v-btn>
       </v-container>
     </v-content>
     <v-footer>
       <span class="px-4"
-        >Sri Lanka Customs &copy; {{ new Date().getFullYear() }}</span
-      >
+        >Sri Lanka Customs &copy; {{ new Date().getFullYear() }}
+      </span>
     </v-footer>
   </v-app>
 </template>
@@ -59,11 +62,48 @@
 <script>
 // import router from "..router";
 import SelfAssessment from "../components/SelfAssessment";
+import firebase from "firebase";
+
+const actionCodeSettings = {
+  // URL you want to redirect back to. The domain (www.example.com) for this
+  // URL must be whitelisted in the Firebase Console.
+  url: "https://localhost:8080/#/signUp",
+  // This must be true.
+  handleCodeInApp: true
+  // dynamicLinkDomain: "https://localhost:8080"
+};
 
 export default {
   name: "Questionnaire",
   components: {
     SelfAssessment
+  },
+  data: () => ({
+    signUpDetails: {
+      name: "",
+      email: "",
+      password: ""
+    }
+  }),
+  methods: {
+    signUp() {
+      firebase
+        .auth()
+        .sendSignInLinkToEmail(this.$route.params.email, actionCodeSettings)
+        .then(function() {
+          // The link was successfully sent. Inform the user.
+          // Save the email locally so you don't need to ask the user for it again
+          // if they open the link on the same device.
+          // window.localStorage.setItem(
+          //   "emailForSignIn",
+          //   this.$route.params.email
+          // );
+        })
+        .catch(function(error) {
+          console.log(error);
+          // Some error occurred, you can inspect the code: error.code
+        });
+    }
   }
 };
 </script>

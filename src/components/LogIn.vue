@@ -41,9 +41,37 @@
 </template>
 
 <script>
+import firebase from "firebase";
+
 export default {
   name: "LogIn",
 
-  data: () => ({})
+  data: () => ({
+    loginDetails: {
+      name: "",
+      email: "",
+      password: ""
+    }
+  }),
+  methods: {
+    signUp() {
+      firebase
+        .auth()
+        .signInWithEmailAndPassword(
+          this.loginDetails.email,
+          this.loginDetails.password
+        )
+        .then(data => {
+          data.user
+            .updateProfile({
+              displayName: this.loginDetails.name
+            })
+            .then(() => {});
+        })
+        .catch(err => {
+          this.error = err.message;
+        });
+    }
+  }
 };
 </script>

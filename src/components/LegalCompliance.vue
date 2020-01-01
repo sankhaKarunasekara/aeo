@@ -6,7 +6,7 @@
           <v-list-item two-line>
             <v-list-item-content>
               <v-list-item-title class="headline"
-                >Legal Compliance Tab</v-list-item-title
+                >Legal Compliance</v-list-item-title
               >
               <!-- <v-list-item-subtitle
                 >Mon, 12:30 PM, Mostly sunny</v-list-item-subtitle
