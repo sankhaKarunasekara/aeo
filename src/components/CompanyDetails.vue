@@ -173,6 +173,8 @@
 </template>
 
 <script>
+import aeoAPI from "../aeoAPI";
+
 export default {
   name: "CompanyDetails",
 
@@ -198,6 +200,21 @@ export default {
       "Govenment",
       "Other"
     ]
-  })
+  }),
+
+  async mounted() {
+    await this.getUser();
+  },
+
+  methods: {
+    async getUser() {
+      try {
+        const response = await aeoAPI.get("/UserAction");
+        console.log(response);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  }
 };
 </script>

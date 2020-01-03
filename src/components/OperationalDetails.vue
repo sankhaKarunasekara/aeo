@@ -6,7 +6,7 @@
           <v-list-item two-line>
             <v-list-item-content>
               <v-list-item-title class="headline"
-                >Opporational Details</v-list-item-title
+                >Operational Details</v-list-item-title
               >
               <!-- <v-list-item-subtitle
                 >Mon, 12:30 PM, Mostly sunny</v-list-item-subtitle
@@ -15,7 +15,7 @@
           </v-list-item>
 
           <v-card-text>
-            <v-subheader class="pl-0"><h3>Oporational Capacity</h3></v-subheader
+            <v-subheader class="pl-0"><h3>Operational Capacity</h3></v-subheader
             ><v-divider class="pt-4"></v-divider>
 
             <v-row>
